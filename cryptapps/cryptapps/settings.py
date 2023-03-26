@@ -9,9 +9,13 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import configparser
 from pathlib import Path
 
+# This is making use of a config.ini file made to hide the secret key and the Root conf-URL for security reasons
+config_obj = configparser.ConfigParser()
+config_obj.read("configfile.ini")
+database = config_obj["database"]
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,15 +24,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-8od(97!7$vx5=0osdkhh+#e_zlnntvick_x86trr(ttyirnkxm'
+SECRET_KEY = database["secret_key"]
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# This has been turned off for security reasons
 DEBUG = False
 
-ALLOWED_HOSTS = ["127.0.0.1"]
+ALLOWED_HOSTS = ["127.0.0.1", "Nikyar.pythonanywhere.com"]
 
 
-# HTTPS activation
+# HTTPS activation to ensure the protection of sensitive data
 SECURE_PROXY_SSL_HEADER = True
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
@@ -60,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'cryptapps.urls'
+ROOT_URLCONF = database["root_confurl"]
 
 TEMPLATES = [
     {

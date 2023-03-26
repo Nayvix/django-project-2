@@ -1,6 +1,7 @@
 from django.db import models
 import datetime
 
+
 class Habitat(models.Model):
     country_name = models.CharField(max_length=200)
     continent = models.CharField(max_length=200)
@@ -44,5 +45,7 @@ class Sighting(models.Model):
         return self.sighting_site
 
     def happened_Recently(self):
+        if self.sighting_date < datetime.now:
+            print("This has yet to happen")
         return self.sighting_date >= datetime.now() - datetime.timedelta(years=10)
 # Create your models here.

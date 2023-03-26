@@ -1,19 +1,16 @@
 Hello!
-This is my application, cryptids.
-Its purpose is to record past and current cryptids, creatures whose existences are yet to be proven by science.
-Each cryptid has a detailed page, showing its name, behaviour, and incidents that have been linked to said cryptid.
-The database is composed of three main classes, interacting between each other: Cryptids, Habitats and Sightings.
-Cryptids is the main class used by the app, as it was originally thought to record cryptids. The other two have been created as
-I needed means to keep informations about the cryptid in a good, organised way.
+This is a README for my application cryptids.
 
-The development of the app was a bit unorganised, and one or two things were added on the fly, which is usually the worst way of coding.
-Despite the basics being very easy to implement thanks to the tutorial, I still had to look up for some precise things,
-and at some point it was planned to add pictures to the Cryptid class, but the idea had to be scraped because it needed Pillow to work out (from the information I found).
-I tried coding the classes to put as much information as I could find on cryptids while keeping things simple.
+In this document I'll report things related to testing and security.
 
-The development of the log in system waas incredibly easy and straightforward, since everything was already planned out and decided beforehand. The main addition is the registration app, which is used during the registration process.
+I made 4 main tests, 2 static and 2 dynamic.
+The first two (test_Sighting_future and test_Sighting_happened) are related to making sure that Sightings are not taking place in the future,
+as the sighting wouldn't have happened yet. It is important to make sure the sightings lists stay clear as scientists would probably investigate areas where
+cryptids appeared based of these.
+The other two are in the same kind of category, as they make sure that the models show the right information.
 
-Unfortunately, I had to limit myself to not get lost in my own work, but the result is that the database doesn't provide as much information about the registered cryptids as a lot of other apps/sites do.
-However, the information provided is really concise and simple to access, and navigating through it is as simple as possible.
-I think the class could use a few more variables to add information on the cryptids, as well as a way to "classify" the cryptids, by signaling if the creature is no longer a cryptid,
-or an option that could allow users to add a related incident to the database. If the app is supposed to record any cryptid activity, it would seem logical to allow users to add and/or delete recent incidents.
+For the security part, a config file has been added to make sure the secret key couldn't be found in the app files,
+HTTPS has been enabled, and the authentication process now prevents any redirect loop. The files have comments going
+into a little bit more detail about how it has been done.
+
+Thank you for reading me.
