@@ -144,8 +144,8 @@ LOGOUT_REDIRECT_URL = "/"
 
 EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
-ADMINS = BASE_DIR / "sent_emails"
-EMAIL_HOST = BASE_DIR / "sent_emails"
-EMAIL_HOST_USER = BASE_DIR / "sent_emails"
+ADMINS = BASE_DIR / "admin_logs"
+EMAIL_HOST = BASE_DIR / "host_emails"
+EMAIL_HOST_USER = BASE_DIR / "host_user_emails"
 EMAIL_FILE_PATH = BASE_DIR / "sent_emails"
 # This is where the pseudo e mail will go to once you reset the password
